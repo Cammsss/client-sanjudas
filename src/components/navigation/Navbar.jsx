@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import logo from '../../assets/img/logo.png'
+import logo from '../../assets/img/ALOA.png'
 
 const navigation = [
   { name: 'Inicio', href: '/', current: true },
@@ -54,7 +54,7 @@ export const Navbar = () => {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex shrink-0 items-center">
               <img
-                alt="Centro Educativo SJT"
+                alt="ALOA"
                 src={logo}
                 className="h-10 w-auto"
               />

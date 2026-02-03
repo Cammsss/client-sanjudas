@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useLogin } from "../../hooks/useLogin";
-import logo from "../../assets/img/logo.png";
-
+import logo from "../../assets/img/ALOA.png";
 export const LoginForm = ({ onToggleForm, onLoginSuccess }) => {
   const [formData, setFormData] = useState({
     username: "",
@@ -23,9 +22,9 @@ export const LoginForm = ({ onToggleForm, onLoginSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const result = await login(formData);
-    
+
     if (result.success) {
       if (onLoginSuccess) {
         onLoginSuccess(result.data.userDetails);
@@ -37,25 +36,25 @@ export const LoginForm = ({ onToggleForm, onLoginSuccess }) => {
 
   return (
     <section className="h-screen w-screen flex items-center justify-center overflow-hidden">
-      <div className="w-full max-w-4xl mx-4 max-h-screen overflow-y-auto">
+      <div className="w-full max-w-screen mx-4 max-h-screen padding-20 overflow-y-auto">
         <div className="block rounded-lg bg-white shadow-lg">
           <div className="lg:flex lg:flex-wrap">
             <div className="px-4 md:px-0 lg:w-6/12">
               <div className="md:mx-6 md:p-12">
                 <div className="text-center">
-                  <img 
-                    src={logo} 
-                    alt="San Judas Tadeo" 
+                  <img
+                    src={logo}
+                    alt="Hogar Mascota"
                     className="mx-auto w-20 h-20 mb-4 object-contain"
                   />
                   <h4 className="mb-6 mt-1 pb-1 text-xl font-semibold text-neutral-800">
-                    Centro Educativo SJT
+                    Hogar Mascota
                   </h4>
                 </div>
 
                 <form onSubmit={handleSubmit}>
                   <p className="mb-4 text-neutral-800">Inicia sesión en tu cuenta</p>
-                  
+
                   {error && (
                     <div className="mb-4 p-3 text-sm text-red-700 bg-red-100 border border-red-300 rounded-lg">
                       {error}
@@ -92,7 +91,7 @@ export const LoginForm = ({ onToggleForm, onLoginSuccess }) => {
                     <button
                       className="mb-3 inline-block w-full rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-lg transition duration-150 ease-in-out hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{
-                        backgroundColor: "#ffa600ff"
+                        backgroundColor: "#cac6beff"
                       }}
                       type="submit"
                       disabled={loading}
@@ -106,13 +105,13 @@ export const LoginForm = ({ onToggleForm, onLoginSuccess }) => {
                   </div>
 
                   <div className="flex items-center justify-between pb-6">
-                    <p className="mb-0 me-2 text-sm"style={{ color: "#0975c6" }}>¿No tienes una cuenta?</p>
+                    <p className="mb-0 me-2 text-sm" style={{ color: "#0975c6" }}>¿No tienes una cuenta?</p>
                     <button
                       type="button"
                       className="inline-block rounded border-2 px-6 py-2 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out hover:bg-opacity-5 focus:outline-none focus:ring-0 disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{
-                        borderColor: "#ffa600ff",
-                        color:"#ffa600ff"
+                        borderColor: "#d4d3d1ff",
+                        color: "#d4d3d1ff"
                       }}
                       onClick={onToggleForm}
                       disabled={loading}
@@ -121,21 +120,6 @@ export const LoginForm = ({ onToggleForm, onLoginSuccess }) => {
                     </button>
                   </div>
                 </form>
-              </div>
-            </div>
-
-            <div className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none" style={{
-              background: "linear-gradient(to right, #ffb108ff, #f0d499ff)"
-            }}>
-              <div className="px-4 py-6 text-center text-white md:mx-6 md:p-6">
-                <h4 className="mb-6 text-xl font-semibold">
-                  Únete a nuestro Centro Educativo
-                </h4>
-                <p className="text-sm">
-                  Inicia sesión y vuelve a conectar con tus compañeros. 
-                  Comparte tus ideas, sigue los proyectos y 
-                  mantente al día con lo que pasa en la comunidad SJT.
-                </p>
               </div>
             </div>
           </div>

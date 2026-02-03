@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRegister } from "../../hooks/useRegister";
-import logo from "../../assets/img/logo.png";
+import logo from "../../assets/img/ALOA.png";
 
 export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
   const [formData, setFormData] = useState({
@@ -56,7 +56,7 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
           <div className="lg:flex lg:flex-wrap">
             {/* Panel gradient - Izquierda */}
             <div className="flex items-center rounded-t-lg lg:w-5/12 lg:rounded-l-lg lg:rounded-tr-none" style={{
-              background: "linear-gradient(to right, #ffb108fa, #f3ddaeff)"
+              background: "linear-gradient(to right, #b9b8b5fa, #f3ddaeff)"
             }}>
               <div className="px-6 py-8 text-white md:mx-6 md:p-8">
                 <div className="text-center mb-6">
@@ -78,7 +78,7 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
                 <div className="text-center mb-6">
                   <img 
                     src={logo} 
-                    alt="San Judas Tadeo" 
+                    alt="ALOA"
                     className="mx-auto w-20 h-20 mb-4 object-contain"
                   />
                   <h4 className="mb-2 text-2xl font-semibold text-neutral-800">

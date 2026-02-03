@@ -17,7 +17,7 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
-    
+
     if (name === "profilePicture") {
       setFormData(prev => ({
         ...prev,
@@ -29,7 +29,7 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
         [name]: value
       }));
     }
-    
+
     if (error) {
       clearError();
     }
@@ -37,9 +37,9 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const result = await register(formData);
-    
+
     if (result.success) {
       if (onRegisterSuccess) {
         onRegisterSuccess(result.data.user);
@@ -51,33 +51,18 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
 
   return (
     <section className="h-screen w-screen flex items-center justify-center overflow-hidden">
-      <div className="w-full max-w-5xl mx-4 max-h-screen overflow-y-auto">
+      <div className="w-full max-w-md mx-4 max-h-screen overflow-y-auto">
         <div className="block rounded-lg bg-white shadow-lg">
           <div className="lg:flex lg:flex-wrap">
-            {/* Panel gradient - Izquierda */}
-            <div className="flex items-center rounded-t-lg lg:w-5/12 lg:rounded-l-lg lg:rounded-tr-none" style={{
-              background: "linear-gradient(to right, #b9b8b5fa, #f3ddaeff)"
-            }}>
-              <div className="px-6 py-8 text-white md:mx-6 md:p-8">
-                <div className="text-center mb-6">
-                  <h4 className="mb-4 text-xl font-semibold">
-                    Únete a nuestro Centro Educativo
-                  </h4>
-                  <p className="text-sm">
-                    Forma parte de nuestra comunidad estudiantil. 
-                    Comparte tus ideas, únete a actividades especiales y 
-                    mantente conectado con otros estudiantes de San Judas Tadeo.
-                  </p>
-                </div>
-              </div>
-            </div>
+
 
             {/* Formulario - Derecha */}
-            <div className="px-4 md:px-0 lg:w-7/12">
+            {/* Formulario - Centrado */}
+            <div className="px-4 md:px-0 w-full">
               <div className="md:mx-6 md:p-8">
                 <div className="text-center mb-6">
-                  <img 
-                    src={logo} 
+                  <img
+                    src={logo}
                     alt="ALOA"
                     className="mx-auto w-20 h-20 mb-4 object-contain"
                   />
@@ -85,7 +70,7 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
                     Crear Cuenta
                   </h4>
                   <p className="text-neutral-600">
-                    Completa la información para unirte a nosotros
+                    Adopta un amigo!!!
                   </p>
                 </div>
 
@@ -194,7 +179,7 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
                     <button
                       className="inline-block w-full rounded px-6 py-3 text-sm font-medium uppercase leading-normal text-white shadow-lg transition duration-150 ease-in-out hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{
-                        backgroundColor: "#ff9900"
+                        backgroundColor: "#b1afadff"
                       }}
                       type="submit"
                       disabled={loading}
@@ -211,8 +196,8 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
                       type="button"
                       className="inline-block rounded border-2 px-6 py-2 text-sm font-medium leading-normal transition duration-150 ease-in-out hover:bg-opacity-5 focus:outline-none focus:ring-0 disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{
-                        borderColor: "#0975c6",
-                        color: "#0975c6"
+                        borderColor: "#c8cbceff",
+                        color: "#c8cbceff"
                       }}
                       onClick={onToggleForm}
                       disabled={loading}

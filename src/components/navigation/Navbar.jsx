@@ -58,6 +58,7 @@ export const Navbar = () => {
                 src={logo}
                 className="h-10 w-auto"
               />
+              <span className="ml-3 text-xl font-bold text-white tracking-wide">ALOA</span>
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">

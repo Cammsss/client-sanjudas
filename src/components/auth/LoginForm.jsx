@@ -23,7 +23,18 @@ export const LoginForm = ({ onToggleForm, onLoginSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const result = await login(formData);
+    const isEmail = formData.username.includes('@');
+    const loginData = {
+      password: formData.password
+    };
+
+    if (isEmail) {
+      loginData.email = formData.username;
+    } else {
+      loginData.username = formData.username;
+    }
+
+    const result = await login(loginData);
 
     if (result.success) {
       if (onLoginSuccess) {

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes } from './routes/AppRoutes';
 import { Toaster } from 'react-hot-toast';
-import { AuthPage } from './pages/AuthPage';
+// import { AuthPage } from './pages/AuthPage';
+import { LandingPage } from './pages/LandingPage';
 import { DashboardPage } from './pages/DashboardPage';
 
 export const App = () => {
@@ -13,7 +14,7 @@ export const App = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     const savedUser = localStorage.getItem('user');
-    
+
     if (token && savedUser) {
       setIsAuthenticated(true);
       setUser(JSON.parse(savedUser));
@@ -39,9 +40,10 @@ export const App = () => {
           <AppRoutes />
         </DashboardPage>
       ) : (
-        <AuthPage onLoginSuccess={handleLoginSuccess} />
+        <LandingPage />
+        // <AuthPage onLoginSuccess={handleLoginSuccess} />
       )}
-      <Toaster 
+      <Toaster
         position="top-right"
         toastOptions={{
           duration: 4000,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: `http://localhost:3000/api`,
+  baseURL: `http://localhost:3001/api`,
   timeout: 5000,
 });
 
@@ -47,7 +47,7 @@ export const loginUser = async (credentials) => {
 export const registerUser = async (userData) => {
   try {
     const formData = new FormData();
-    
+
     // Agregar todos los campos del formulario
     Object.keys(userData).forEach(key => {
       if (key === 'profilePicture' && userData[key]) {

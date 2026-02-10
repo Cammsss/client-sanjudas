@@ -39,7 +39,7 @@ export const Navbar = () => {
   const userProfileImage = `http://localhost:3000/api/auth/getImage/${userDetails.profilePicture}`;
 
   return (
-    <Disclosure as="nav" className="relative bg-gradient-to-r from-orange-500 to-orange-300">
+    <Disclosure as="nav" className="relative bg-gradient-to-r from-[#9D7E6B] to-[#FAC19E]">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">

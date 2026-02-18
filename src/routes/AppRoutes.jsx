@@ -4,6 +4,8 @@ import { Welcome } from "../components/ui/Welcome";
 import { PostList } from "../components/posts/PostList";
 import { PostForm } from "../components/posts/PostForm";
 import { PostDetail } from "../components/posts/PostDetail";
+import { AboutUsPage } from "../pages/AboutUsPage";
+import { AdoptionSuccessPage } from "../pages/AdoptionSuccessPage";
 // Agrega aquí más imports de páginas o componentes según sea necesario
 
 export const AppRoutes = () => (
@@ -12,5 +14,7 @@ export const AppRoutes = () => (
     <Route path="/publicaciones" element={<PostList />} />
     <Route path="/publicaciones/crear" element={<PostForm />} />
     <Route path="/posts/:id" element={<PostDetail />} />
+    <Route path="/nosotros" element={<AboutUsPage />} />
+    <Route path="/adopcion-exitosa" element={<AdoptionSuccessPage />} />
   </Routes>
 );

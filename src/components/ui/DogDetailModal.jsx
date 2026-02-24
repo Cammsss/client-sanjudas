@@ -68,10 +68,15 @@ export const DogDetailModal = ({ isOpen, onClose, dog }) => {
                                         <div className="p-6 sm:p-8">
                                             <Dialog.Title
                                                 as="h3"
-                                                className="text-2xl sm:text-3xl font-extrabold leading-6 text-[#9D7E6B] mb-4 uppercase tracking-wider flex items-center gap-2"
+                                                className="text-2xl sm:text-3xl font-extrabold leading-6 text-[#9D7E6B] mb-4 uppercase tracking-wider flex flex-wrap items-center gap-2"
                                             >
                                                 <FaPaw className="text-[#FAC19E]" />
-                                                {dog.breedName || dog.name}
+                                                <span>{dog.name}</span>
+                                                {dog.breedName && (
+                                                    <span className="text-sm font-bold bg-[#FAC19E] text-[#5c3d2e] px-3 py-1 rounded-full normal-case tracking-normal">
+                                                        {dog.breedName}
+                                                    </span>
+                                                )}
                                             </Dialog.Title>
 
                                             <div className="mt-4">

@@ -8,6 +8,7 @@ import { DashboardPage } from './pages/DashboardPage';
 import { SmallBreedsPage } from './pages/SmallBreedsPage';
 import { MediumBreedsPage } from './pages/MediumBreedsPage';
 import { LargeBreedsPage } from './pages/LargeBreedsPage';
+import { DogHistoryPage } from './pages/DogHistoryPage';
 
 export const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -54,6 +55,7 @@ export const App = () => {
         <Route path="/raza-pequena" element={<SmallBreedsPage />} />
         <Route path="/raza-mediana" element={<MediumBreedsPage />} />
         <Route path="/raza-grande" element={<LargeBreedsPage />} />
+        <Route path="/historia/:breedId" element={<DogHistoryPage />} />
         {/* En caso de que se necesiten más rutas públicas o el AuthPage, se añaden aquí */}
       </Routes>
       <Toaster

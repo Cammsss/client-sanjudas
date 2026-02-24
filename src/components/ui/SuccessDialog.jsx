@@ -1,3 +1,7 @@
+import React, { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { FaPaw } from 'react-icons/fa';
+
 export const SuccessDialog = ({ isOpen, onConfirm, email }) => {
     return (
         <Transition appear show={isOpen} as={Fragment}>

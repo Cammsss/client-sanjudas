@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navbar } from '../navigation/Navbar';
-import { Footer } from '../ui/Footer';
 
 export const Layout = ({ children }) => {
   return (
@@ -11,7 +10,6 @@ export const Layout = ({ children }) => {
       <div className="flex-1 overflow-y-auto bg-white/40 backdrop-blur-sm">
         {children}
       </div>
-      <Footer />
     </div>
   );
 }

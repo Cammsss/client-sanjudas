@@ -70,13 +70,6 @@ export const LandingPage = () => {
 
                     {/* Center Content */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                        {/* Filter Button */}
-                        <div className="pointer-events-auto mb-6">
-                            <button className="bg-[#9D7E6B] text-white border border-black/20 w-64 py-3 text-lg font-medium shadow-xl hover:bg-[#8c705f] transition-colors">
-                                FILTRO
-                            </button>
-                        </div>
-
                         {/* Logo */}
                         <div className="pointer-events-auto bg-[#FDEBE2] p-6 rounded-3xl shadow-xl flex flex-col items-center justify-center">
                             <img src={aloaLogo} alt="ALOA Logo" className="w-40 h-32 object-contain" />

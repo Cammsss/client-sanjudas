@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: `http://localhost:3001/api`,
+  baseURL: `http://127.0.0.1:3001/api`,
   timeout: 5000,
 });
+
 
 // Interceptor para agregar el token JWT a las requests
 apiClient.interceptors.request.use(
@@ -120,3 +121,15 @@ export const createPostService = async (postData) => {
     };
   }
 };
+
+export const createAdoption = async (adoptionData) => {
+  try {
+    const response = await apiClient.post('/adoptions', adoptionData);
+    return response.data;
+  } catch (e) {
+    return {
+      error: true,
+      message: e.response?.data?.message || 'Error al registrar adopción',
+    };
+  }
+};

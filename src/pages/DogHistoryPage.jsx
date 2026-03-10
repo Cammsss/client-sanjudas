@@ -1,20 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaPaw, FaHistory, FaInfoCircle, FaHeart } from 'react-icons/fa';
-import { dogData } from '../data/dogData';
+import { getDogs } from '../services/dogService';
 import { AdoptionFormModal } from '../components/ui/AdoptionFormModal';
 
 export const DogHistoryPage = () => {
     const { breedId } = useParams();
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    // Buscar el perro en la data
-    const dog = dogData.find(d => d.id === breedId);
+    const [dog, setDog] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+
+        const fetchDogDetail = async () => {
+            try {
+                const allDogs = await getDogs();
+                const foundDog = allDogs.find(d => d._id === breedId);
+                setDog(foundDog);
+            } catch (error) {
+                console.error("Error al obtener detalle del perro:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchDogDetail();
+    }, [breedId]);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen theme-bg flex flex-col items-center justify-center p-10 text-center">
+                <FaPaw className="text-7xl text-[#9D7E6B] mb-6 animate-pulse" />
+                <h1 className="text-3xl font-bold text-[#9D7E6B] mb-4">Cargando historia...</h1>
+            </div>
+        );
+    }
 
     if (!dog) {
         return (
@@ -38,7 +60,7 @@ export const DogHistoryPage = () => {
             <div className="relative h-[40vh] md:h-[50vh] overflow-hidden">
                 <div className="absolute inset-0 bg-black/30 z-10"></div>
                 <img
-                    src={dog.image}
+                    src={dog.image.startsWith('http') || dog.image.startsWith('/') ? dog.image : `/src/assets/breeds/${dog.image}`}
                     alt={dog.name}
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />

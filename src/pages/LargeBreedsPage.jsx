@@ -1,13 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import { dogData } from '../data/dogData';
+import { getDogs } from '../services/dogService';
+import { DogDetailModal } from '../components/ui/DogDetailModal';
 
 export const LargeBreedsPage = () => {
     const navigate = useNavigate();
+    const [dogs, setDogs] = useState([]);
+    const [selectedDog, setSelectedDog] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-    // Filtrar solo las razas grandes de la data centralizada
-    const largeBreeds = dogData.filter(dog => dog.category === 'Raza Grande');
+    useEffect(() => {
+        const fetchDogs = async () => {
+            try {
+                const allDogs = await getDogs();
+                const largeBreeds = allDogs.filter(dog => dog.category === 'Raza Grande');
+                setDogs(largeBreeds);
+            } catch (error) {
+                console.error("Error al cargar perros:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchDogs();
+    }, []);
+
+    const handleDogClick = (dog) => {
+        setSelectedDog(dog);
+        setIsModalOpen(true);
+    };
 
     const handleImageError = (e) => {
         e.target.src = 'https://via.placeholder.com/400x300/FAC19E/9D7E6B?text=ALOA+Mascotas';
@@ -39,15 +62,19 @@ export const LargeBreedsPage = () => {
                         Haz clic en una mascota para conocer su historia
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                        {largeBreeds.map((dog) => (
+                        {loading ? (
+                            <p className="text-center col-span-full">Cargando...</p>
+                        ) : dogs.length === 0 ? (
+                            <p className="text-center col-span-full">No se encontraron mascotas.</p>
+                        ) : dogs.map((dog) => (
                             <div
-                                key={dog.id}
-                                onClick={() => navigate(`/historia/${dog.id}`)}
+                                key={dog._id}
+                                onClick={() => handleDogClick(dog)}
                                 className="bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border-2 border-[#9D7E6B]/20 hover:scale-105 transition-transform duration-300 group cursor-pointer"
                             >
                                 <div className="h-64 bg-[#FDEBE2] relative flex items-center justify-center overflow-hidden">
                                     <img
-                                        src={dog.image}
+                                        src={dog.image.startsWith('http') || dog.image.startsWith('/') ? dog.image : `/src/assets/breeds/${dog.image}`}
                                         alt={dog.name}
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                         onError={handleImageError}
@@ -74,6 +101,12 @@ export const LargeBreedsPage = () => {
                     </div>
                 </div>
             </main>
+
+            <DogDetailModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                dog={selectedDog}
+            />
 
             <footer className="bg-[#9D7E6B] h-16 flex items-center justify-center text-white font-bold shadow-inner z-20">
                 <p className="text-sm tracking-widest uppercase">ALOA - Amor por las Mascotas</p>

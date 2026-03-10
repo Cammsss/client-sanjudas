@@ -4,6 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { FaTimes, FaPaw, FaDog } from 'react-icons/fa';
 import { BiRefresh } from 'react-icons/bi';
 import { SuccessDialog } from './SuccessDialog';
+import { createAdoption } from '../../services/apiService';
 
 
 export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
@@ -34,13 +35,13 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
     const handleSuccessConfirm = () => {
         setShowSuccessModal(false);
         onClose();
-        // Navigate to the success page
-        navigate(`/adopcion-exitosa?dogName=${encodeURIComponent(dogName)}`);
+        // Redirigir a la página principal
+        navigate('/');
     };
 
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Basic validation
@@ -56,18 +57,24 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
             alert("Los números de teléfono no coinciden");
             return;
         }
-        if (!formData.terms) {
-            alert("Por favor verifica que no eres un robot");
-            return;
-        }
-
         setIsSubmitting(true);
 
-        // Simulate API call to send email
-        setTimeout(() => {
-            setIsSubmitting(false);
+        const result = await createAdoption({
+            fullName: formData.fullName,
+            email: formData.email,
+            birthDate: formData.birthDate,
+            phone: formData.phone,
+            country: formData.country,
+            dogName: dogName
+        });
+
+        setIsSubmitting(false);
+
+        if (!result.error) {
             setShowSuccessModal(true);
-        }, 1500);
+        } else {
+            alert(result.message || "Error al realizar el registro");
+        }
     };
 
     return (
@@ -123,7 +130,7 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
                                                     name="fullName"
                                                     required
                                                     placeholder="Nombre completo"
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white"
+                                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white placeholder:text-gray-400 shadow-lg"
                                                     value={formData.fullName}
                                                     onChange={handleChange}
                                                 />
@@ -137,7 +144,7 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
                                                     name="email"
                                                     required
                                                     placeholder="ejemplo@correo.com"
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white"
+                                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white placeholder:text-gray-400 shadow-lg"
                                                     value={formData.email}
                                                     onChange={handleChange}
                                                 />
@@ -149,7 +156,7 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
                                                     name="confirmEmail"
                                                     required
                                                     placeholder="ejemplo@correo.com"
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white"
+                                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white placeholder:text-gray-400 shadow-lg"
                                                     value={formData.confirmEmail}
                                                     onChange={handleChange}
                                                 />
@@ -164,7 +171,7 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
                                                     required
                                                     placeholder="Contraseña (Mínimo 6 caracteres)"
                                                     minLength={6}
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white"
+                                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white placeholder:text-gray-400 shadow-lg"
                                                     value={formData.password}
                                                     onChange={handleChange}
                                                 />
@@ -177,7 +184,7 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
                                                     required
                                                     placeholder="Repite contraseña"
                                                     minLength={6}
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white"
+                                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white placeholder:text-gray-400 shadow-lg"
                                                     value={formData.confirmPassword}
                                                     onChange={handleChange}
                                                 />
@@ -189,7 +196,7 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
                                                     type="date"
                                                     name="birthDate"
                                                     required
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white"
+                                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white shadow-lg"
                                                     value={formData.birthDate}
                                                     onChange={handleChange}
                                                 />
@@ -203,7 +210,7 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
                                                     name="phone"
                                                     required
                                                     placeholder="12345678"
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white"
+                                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white placeholder:text-gray-400 shadow-lg"
                                                     value={formData.phone}
                                                     onChange={handleChange}
                                                 />
@@ -215,7 +222,7 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
                                                     name="confirmPhone"
                                                     required
                                                     placeholder="12345678"
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white"
+                                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white placeholder:text-gray-400 shadow-lg"
                                                     value={formData.confirmPhone}
                                                     onChange={handleChange}
                                                 />
@@ -226,7 +233,7 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
                                                 <label className="block text-sm font-bold text-gray-600 mb-1">País <span className="text-red-500">*</span></label>
                                                 <select
                                                     name="country"
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white appearance-none"
+                                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-300 focus:ring focus:ring-orange-200 transition-all bg-white appearance-none shadow-lg"
                                                     value={formData.country}
                                                     onChange={handleChange}
                                                 >
@@ -238,25 +245,7 @@ export const AdoptionFormModal = ({ isOpen, onClose, dogName }) => {
                                                 </select>
                                             </div>
 
-                                            {/* Captcha Mock */}
-                                            <div className="md:col-span-2 flex justify-center mt-4">
-                                                <div className="bg-gray-100 border border-gray-300 rounded p-4 flex items-center gap-4 w-fit">
-                                                    <input
-                                                        type="checkbox"
-                                                        name="terms"
-                                                        id="terms"
-                                                        className="w-6 h-6 text-blue-600 rounded focus:ring-blue-500"
-                                                        checked={formData.terms}
-                                                        onChange={handleChange}
-                                                    />
-                                                    <label htmlFor="terms" className="text-sm text-gray-700">No soy un robot</label>
-                                                    <div className="flex flex-col items-center gap-1 ml-4 text-[10px] text-gray-500">
-                                                        <BiRefresh size={20} />
-                                                        <span>reCAPTCHA</span>
-                                                        <span>Privacidad - Términos</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+
 
                                             {/* Submit Button */}
                                             <div className="md:col-span-2 flex justify-center mt-6 relative">

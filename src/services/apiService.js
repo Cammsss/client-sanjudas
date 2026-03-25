@@ -132,4 +132,4 @@ export const createAdoption = async (adoptionData) => {
       message: e.response?.data?.message || 'Error al registrar adopción',
     };
   }
-};
+};

@@ -1,49 +1,8 @@
-import React, { useState } from "react";
-import { useLogin } from "../../hooks/useLogin";
+import React from "react";
+import { useLoginForm } from "../../hooks/useLoginForm";
 import logo from "../../assets/img/ALOA.png";
 export const LoginForm = ({ onToggleForm, onLoginSuccess }) => {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
-
-  const { login, loading, error, clearError } = useLogin();
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    if (error) {
-      clearError();
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const isEmail = formData.username.includes('@');
-    const loginData = {
-      password: formData.password
-    };
-
-    if (isEmail) {
-      loginData.email = formData.username;
-    } else {
-      loginData.username = formData.username;
-    }
-
-    const result = await login(loginData);
-
-    if (result.success) {
-      if (onLoginSuccess) {
-        onLoginSuccess(result.data.userDetails);
-      }
-    } else {
-      console.error("Error en login:", result.error);
-    }
-  };
+  const { formData, loading, error, handleInputChange, handleSubmit } = useLoginForm(onLoginSuccess);
 
   return (
     <section className="h-screen w-screen flex items-center justify-center overflow-hidden">

@@ -1,31 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import { getDogs } from '../services/dogService';
+import { useDogs } from '../hooks/useDogs';
 import { DogDetailModal } from '../components/ui/DogDetailModal';
 
 export const MediumBreedsPage = () => {
     const navigate = useNavigate();
-    const [dogs, setDogs] = useState([]);
+    const { dogs, loading } = useDogs('Raza Mediana');
     const [selectedDog, setSelectedDog] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchDogs = async () => {
-            try {
-                const allDogs = await getDogs();
-                const mediumBreeds = allDogs.filter(dog => dog.category === 'Raza Mediana');
-                setDogs(mediumBreeds);
-            } catch (error) {
-                console.error("Error al cargar perros:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchDogs();
-    }, []);
 
     const handleDogClick = (dog) => {
         setSelectedDog(dog);

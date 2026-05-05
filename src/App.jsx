@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppRoutes } from './routes/AppRoutes';
 import { Toaster } from 'react-hot-toast';
-// import { AuthPage } from './pages/AuthPage';
+import { AuthPage } from './pages/AuthPage';
 import { LandingPage } from './pages/LandingPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { SmallBreedsPage } from './pages/SmallBreedsPage';
@@ -40,23 +40,25 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            isAuthenticated ? (
-              <DashboardPage user={user} onLogout={handleLogout}>
-                <AppRoutes />
-              </DashboardPage>
-            ) : (
-              <LandingPage />
-            )
-          }
-        />
-        <Route path="/raza-pequena" element={<SmallBreedsPage />} />
-        <Route path="/raza-mediana" element={<MediumBreedsPage />} />
-        <Route path="/raza-grande" element={<LargeBreedsPage />} />
-        <Route path="/historia/:breedId" element={<DogHistoryPage />} />
-        {/* En caso de que se necesiten más rutas públicas o el AuthPage, se añaden aquí */}
+        {isAuthenticated ? (
+          <>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/raza-pequena" element={<SmallBreedsPage />} />
+            <Route path="/raza-mediana" element={<MediumBreedsPage />} />
+            <Route path="/raza-grande" element={<LargeBreedsPage />} />
+            <Route path="/historia/:breedId" element={<DogHistoryPage />} />
+            <Route
+              path="/app/*"
+              element={
+                <DashboardPage user={user} onLogout={handleLogout}>
+                  <AppRoutes />
+                </DashboardPage>
+              }
+            />
+          </>
+        ) : (
+          <Route path="*" element={<AuthPage onLoginSuccess={handleLoginSuccess} />} />
+        )}
       </Routes>
       <Toaster
         position="top-right"

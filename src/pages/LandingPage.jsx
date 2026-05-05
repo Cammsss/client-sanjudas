@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import themeBg from '../assets/theme_bg.jpg';
 import aloaLogo from '../assets/aloa_logo_final.png';
 import { SiGmail } from "react-icons/si";
@@ -11,28 +11,49 @@ export const LandingPage = () => {
     const [showQuienesSomos, setShowQuienesSomos] = useState(false);
     const [showMision, setShowMision] = useState(false);
     const [showVision, setShowVision] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
+    const [userDetails, setUserDetails] = useState({});
+
+    useEffect(() => {
+        try {
+            const userData = localStorage.getItem('user');
+            if (userData) {
+                setUserDetails(JSON.parse(userData));
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }, []);
 
     return (
         <div className="flex flex-col h-screen w-full font-sans overflow-hidden">
             {/* Header */}
-            <header className="bg-[#9D7E6B] h-20 flex items-center px-8 space-x-4 shadow-md z-20">
+            <header className="bg-[#9D7E6B] h-20 flex items-center justify-between px-8 shadow-md z-20">
+                <div className="flex items-center space-x-4">
+                    <button
+                        onClick={() => navigate('/raza-pequena')}
+                        className="bg-[#FAC19E] text-black border border-black/20 rounded-full px-6 py-2 text-xs font-semibold uppercase tracking-wider hover:bg-[#e9b392] transition-colors"
+                    >
+                        Raza Pequeña
+                    </button>
+                    <button
+                        onClick={() => navigate('/raza-mediana')}
+                        className="bg-[#FAC19E] text-black border border-black/20 rounded-full px-6 py-2 text-xs font-semibold uppercase tracking-wider hover:bg-[#e9b392] transition-colors"
+                    >
+                        Raza Mediana
+                    </button>
+                    <button
+                        onClick={() => navigate('/raza-grande')}
+                        className="bg-[#FAC19E] text-black border border-black/20 rounded-full px-6 py-2 text-xs font-semibold uppercase tracking-wider hover:bg-[#e9b392] transition-colors"
+                    >
+                        Raza Grande
+                    </button>
+                </div>
                 <button
-                    onClick={() => navigate('/raza-pequena')}
-                    className="bg-[#FAC19E] text-black border border-black/20 rounded-full px-6 py-2 text-xs font-semibold uppercase tracking-wider hover:bg-[#e9b392] transition-colors"
+                    onClick={() => setShowProfile(true)}
+                    className="bg-white/20 text-white border border-white/40 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider hover:bg-white/30 transition-colors flex items-center gap-2"
                 >
-                    Raza Pequeña
-                </button>
-                <button
-                    onClick={() => navigate('/raza-mediana')}
-                    className="bg-[#FAC19E] text-black border border-black/20 rounded-full px-6 py-2 text-xs font-semibold uppercase tracking-wider hover:bg-[#e9b392] transition-colors"
-                >
-                    Raza Mediana
-                </button>
-                <button
-                    onClick={() => navigate('/raza-grande')}
-                    className="bg-[#FAC19E] text-black border border-black/20 rounded-full px-6 py-2 text-xs font-semibold uppercase tracking-wider hover:bg-[#e9b392] transition-colors"
-                >
-                    Raza Grande
+                    {userDetails.username || 'Mi Cuenta'}
                 </button>
             </header>
 
@@ -186,6 +207,51 @@ export const LandingPage = () => {
                                     className="bg-[#9D7E6B] text-white px-8 py-2 rounded-full font-bold hover:bg-[#8c705f] transition-colors shadow-md"
                                 >
                                     Cerrar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Modal - Perfil */}
+                {showProfile && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+                        <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full relative border-4 border-[#9D7E6B] animate-in fade-in zoom-in duration-300">
+                            <button
+                                onClick={() => setShowProfile(false)}
+                                className="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition-colors"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+                            <h2 className="text-2xl font-extrabold text-[#9D7E6B] mb-6 text-center uppercase tracking-wide border-b-2 border-[#9D7E6B]/20 pb-4">
+                                Mis Datos
+                            </h2>
+
+                            <div className="space-y-4 text-gray-700 text-lg">
+                                <p><span className="font-bold text-[#9D7E6B]">Usuario:</span> {userDetails.username}</p>
+                                <p><span className="font-bold text-[#9D7E6B]">Nombre:</span> {userDetails.name} {userDetails.surname}</p>
+                                <p><span className="font-bold text-[#9D7E6B]">Correo:</span> {userDetails.email}</p>
+                            </div>
+
+                            <div className="mt-8 flex justify-between">
+                                <button
+                                    onClick={() => setShowProfile(false)}
+                                    className="bg-gray-200 text-gray-800 px-6 py-2 rounded-full font-bold hover:bg-gray-300 transition-colors shadow-md"
+                                >
+                                    Cerrar
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        localStorage.removeItem('token');
+                                        localStorage.removeItem('user');
+                                        window.location.reload();
+                                    }}
+                                    className="bg-red-500 text-white px-6 py-2 rounded-full font-bold hover:bg-red-600 transition-colors shadow-md"
+                                >
+                                    Cerrar Sesión
                                 </button>
                             </div>
                         </div>

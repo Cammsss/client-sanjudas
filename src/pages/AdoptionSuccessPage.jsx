@@ -89,8 +89,35 @@ export const AdoptionSuccessPage = () => {
                                 Has dado el primer paso para cambiar una vida para siempre. Hemos recibido tu solicitud y nos pondremos en contacto contigo muy pronto para continuar con el proceso.
                             </p>
 
-                            <div className="bg-[#FDEBE2] p-6 rounded-2xl border-2 border-[#FAC19E] inline-block mt-4 transform hover:-rotate-1 transition-transform duration-300">
-                                <p className="text-[#9D7E6B] font-bold italic">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-4xl mx-auto text-left">
+                                <div className="bg-[#FDEBE2] p-6 rounded-2xl border border-[#FAC19E] shadow-sm hover:shadow-md transition-shadow">
+                                    <h3 className="text-xl font-bold text-[#9D7E6B] mb-3 flex items-center gap-2">
+                                        <FaHeart className="text-red-400" /> Beneficios de una mascota
+                                    </h3>
+                                    <ul className="list-disc list-inside space-y-2 text-sm text-gray-800">
+                                        <li>Reducen el estrés y la ansiedad diaria.</li>
+                                        <li>Fomentan la actividad física y los paseos.</li>
+                                        <li>Brindan compañía incondicional y lealtad.</li>
+                                        <li>Ayudan a mejorar la salud cardiovascular.</li>
+                                        <li>Mejoran el desarrollo emocional familiar.</li>
+                                    </ul>
+                                </div>
+                                <div className="bg-[#FDEBE2] p-6 rounded-2xl border border-[#FAC19E] shadow-sm hover:shadow-md transition-shadow">
+                                    <h3 className="text-xl font-bold text-[#9D7E6B] mb-3 flex items-center gap-2">
+                                        <FaDog className="text-[#9D7E6B]" /> Cuidados importantes
+                                    </h3>
+                                    <ul className="list-disc list-inside space-y-2 text-sm text-gray-800">
+                                        <li>Visitas periódicas al veterinario y vacunas.</li>
+                                        <li>Alimentación balanceada y agua fresca siempre.</li>
+                                        <li>Tiempo diario de juego y paseos recreativos.</li>
+                                        <li>Cariño, paciencia y refuerzo positivo.</li>
+                                        <li>Mantener su higiene y limpieza dental.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="bg-[#FDEBE2]/50 p-4 rounded-xl inline-block mt-6">
+                                <p className="text-[#9D7E6B] font-bold italic text-sm md:text-base">
                                     "Salvar un animal no cambiará el mundo, pero cambiará el mundo para ese animal."
                                 </p>
                             </div>

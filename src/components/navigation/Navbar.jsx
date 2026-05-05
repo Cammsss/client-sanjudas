@@ -95,8 +95,16 @@ export const Navbar = () => {
 
               <MenuItems
                 transition
-                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg outline outline-black/5 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-1 shadow-lg outline outline-black/5 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
               >
+                <div className="px-4 py-3 border-b border-gray-100 mb-1">
+                  <p className="text-sm font-bold text-gray-900 truncate">
+                    {userDetails.name} {userDetails.surname}
+                  </p>
+                  <p className="text-xs font-medium text-gray-500 truncate">
+                    {userDetails.email}
+                  </p>
+                </div>
                 <MenuItem>
                   <a
                     href="#"

@@ -177,9 +177,9 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
 
                   <div className="mb-4 text-center">
                     <button
-                      className="inline-block w-full rounded px-6 py-3 text-sm font-medium uppercase leading-normal text-white shadow-lg transition duration-150 ease-in-out hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="inline-block w-full rounded px-6 py-3 text-sm font-bold uppercase leading-normal text-white shadow-lg transition duration-150 ease-in-out hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{
-                        backgroundColor: "#b1afadff"
+                        backgroundColor: "#8c705f"
                       }}
                       type="submit"
                       disabled={loading}
@@ -196,8 +196,8 @@ export const RegisterForm = ({ onToggleForm, onRegisterSuccess }) => {
                       type="button"
                       className="inline-block rounded border-2 px-6 py-2 text-sm font-medium leading-normal transition duration-150 ease-in-out hover:bg-opacity-5 focus:outline-none focus:ring-0 disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{
-                        borderColor: "#c8cbceff",
-                        color: "#c8cbceff"
+                        borderColor: "#8c705f",
+                        color: "#8c705f"
                       }}
                       onClick={onToggleForm}
                       disabled={loading}

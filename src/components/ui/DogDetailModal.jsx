@@ -55,7 +55,7 @@ export const DogDetailModal = ({ isOpen, onClose, dog }) => {
                                         {/* Image Section */}
                                         <div className="h-64 sm:h-80 w-full bg-[#fcece3] flex items-center justify-center overflow-hidden">
                                             <img
-                                                src={dog.image.startsWith('http') || dog.image.startsWith('/') ? dog.image : `/src/assets/breeds/${dog.image}`}
+                                                src={dog.image}
                                                 alt={dog.name}
                                                 className="w-full h-full object-cover"
                                                 onError={(e) => {

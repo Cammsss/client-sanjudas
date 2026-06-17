@@ -60,7 +60,7 @@ export const DogHistoryPage = () => {
             <div className="relative h-[40vh] md:h-[50vh] overflow-hidden">
                 <div className="absolute inset-0 bg-black/30 z-10"></div>
                 <img
-                    src={dog.image.startsWith('http') || dog.image.startsWith('/') ? dog.image : `/src/assets/breeds/${dog.image}`}
+                    src={dog.image}
                     alt={dog.name}
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />

@@ -57,7 +57,7 @@ export const SmallBreedsPage = () => {
                             >
                                 <div className="h-64 bg-[#FDEBE2] relative flex items-center justify-center overflow-hidden">
                                     <img
-                                        src={dog.image.startsWith('http') || dog.image.startsWith('/') ? dog.image : `/src/assets/breeds/${dog.image}`}
+                                        src={dog.image}
                                         alt={dog.name}
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                         onError={handleImageError}

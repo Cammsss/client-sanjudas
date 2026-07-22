@@ -12,7 +12,7 @@ export const LandingPage = () => {
     const [showMision, setShowMision] = useState(false);
     const [showVision, setShowVision] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
-    const [showWelcome, setShowWelcome] = useState(true);
+    const [showWelcome, setShowWelcome] = useState(false);
     const [userDetails, setUserDetails] = useState({});
 
     useEffect(() => {
@@ -20,12 +20,12 @@ export const LandingPage = () => {
             const userData = localStorage.getItem('user');
             if (userData) {
                 setUserDetails(JSON.parse(userData));
-            }
-            
-            // Mostrar bienvenida solo la primera vez
-            const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
-            if (hasSeenWelcome) {
-                setShowWelcome(false);
+                // Mostrar bienvenida solo si acaba de iniciar sesión (bandera temporal)
+                const justLoggedIn = localStorage.getItem('justLoggedIn');
+                if (justLoggedIn === 'true') {
+                    setShowWelcome(true);
+                    localStorage.removeItem('justLoggedIn');
+                }
             }
         } catch (error) {
             console.error(error);

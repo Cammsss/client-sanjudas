@@ -27,6 +27,9 @@ export const useLogin = () => {
         localStorage.setItem('user', JSON.stringify(result.userDetails));
       }
 
+      // Establecer bandera para mostrar modal de bienvenida
+      localStorage.setItem('justLoggedIn', 'true');
+
       toast.success('¡Bienvenido de vuelta!');
       setLoading(false);
       return { success: true, data: result };

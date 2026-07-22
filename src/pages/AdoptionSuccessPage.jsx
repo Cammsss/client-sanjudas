@@ -36,28 +36,25 @@ export const AdoptionSuccessPage = () => {
     }, []);
 
     return (
-        <div className="flex flex-col h-screen w-full font-sans overflow-hidden">
+        <div className="min-h-screen w-full font-sans bg-[#FDEBE2]">
             {/* Header */}
-            <header className="bg-[#9D7E6B] h-20 flex items-center px-10 shadow-md z-20 sticky top-0 justify-between">
+            <header className="bg-[#9D7E6B] h-14 flex items-center px-4 shadow-md z-20 sticky top-0 justify-between">
                 <button
                     onClick={() => navigate('/')}
-                    className="flex items-center gap-2 bg-[#FAC19E] text-black px-4 py-2 rounded-full font-bold hover:bg-[#e9b392] transition-colors shadow-md text-sm uppercase cursor-pointer"
+                    className="flex items-center gap-2 bg-[#FAC19E] text-black px-2 py-1 rounded-full font-bold hover:bg-[#e9b392] transition-colors shadow-md text-xs uppercase cursor-pointer"
                 >
                     <FaHome /> Inicio
                 </button>
-                <div className="text-white font-bold text-xl uppercase tracking-widest hidden sm:block">ALOA - ¡Adopción Exitosa!</div>
-                <div className="w-24 hidden sm:block"></div> {/* Spacer */}
+                <div className="text-white font-bold text-base uppercase tracking-widest hidden sm:block">ALOA - ¡Entrevista!</div>
+                <div className="w-16 hidden sm:block"></div> {/* Spacer */}
             </header>
 
             {/* Main Content */}
-            <main className="flex-1 relative">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0 theme-bg"></div>
-
+            <main className="relative py-4 px-2">
                 {/* Content Container */}
-                <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-4">
+                <div className="flex flex-col items-center justify-start">
 
-                    <div className="bg-white/90 backdrop-blur-md p-8 md:p-12 rounded-[3rem] shadow-2xl max-w-3xl w-full text-center border-4 border-[#9D7E6B] animate-in zoom-in duration-500 relative">
+                    <div className="bg-white/90 backdrop-blur-md p-6 md:p-8 rounded-[2rem] shadow-2xl max-w-5xl w-full text-center border-4 border-[#9D7E6B] animate-in zoom-in duration-500 relative my-2">
                         {/* Close Button */}
                         <button
                             onClick={() => navigate('/')}
@@ -72,29 +69,29 @@ export const AdoptionSuccessPage = () => {
                         <FaHeart className="text-red-400 text-3xl absolute bottom-10 right-10 animate-bounce delay-300 hidden sm:block" />
                         <FaDog className="text-[#9D7E6B] text-5xl absolute top-6 right-12 animate-pulse delay-700 hidden sm:block" />
 
-                        <div className="flex flex-col items-center mb-6">
-                            <img src={aloaLogo} alt="ALOA Logo" className="w-32 h-32 object-contain mb-4 drop-shadow-md" />
-                            <h1 className="text-4xl md:text-5xl font-extrabold text-[#9D7E6B] uppercase tracking-wide mb-2">
-                                ¡Muchas Gracias!
+                        <div className="flex flex-col items-center mb-3">
+                            <img src={aloaLogo} alt="ALOA Logo" className="w-20 h-20 object-contain mb-2 drop-shadow-md" />
+                            <h1 className="text-2xl md:text-3xl font-extrabold text-[#9D7E6B] uppercase tracking-wide mb-1">
+                                ¡Entrevista Programada!
                             </h1>
-                            <div className="w-32 h-2 bg-[#FAC19E] rounded-full mb-6"></div>
+                            <div className="w-24 h-1 bg-[#FAC19E] rounded-full mb-3"></div>
                         </div>
 
-                        <div className="space-y-6 text-gray-700">
-                            <p className="text-xl md:text-2xl font-medium">
-                                Gracias por decidir adoptar a <span className="text-[#d97706] font-bold text-3xl block mt-2 transform hover:scale-110 transition-transform duration-300 inline-block">{dogName}</span>
+                        <div className="space-y-3 text-gray-700">
+                            <p className="text-base md:text-lg font-medium">
+                                Tu solicitud para adoptar a <span className="text-[#d97706] font-bold text-xl block mt-1 transform hover:scale-110 transition-transform duration-300 inline-block">{dogName}</span> ha sido recibida
                             </p>
 
-                            <p className="text-lg leading-relaxed max-w-xl mx-auto">
-                                Has dado el primer paso para cambiar una vida para siempre. Hemos recibido tu solicitud y nos pondremos en contacto contigo muy pronto para continuar con el proceso.
+                            <p className="text-sm leading-relaxed max-w-xl mx-auto">
+                                Para garantizar el bienestar de nuestras mascotas, te invitamos a una entrevista personal. Evaluaremos tu idoneidad como adoptante, verificando que puedas brindar un hogar seguro, amoroso y responsable. Nos pondremos en contacto contigo pronto para agendar la cita.
                             </p>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-4xl mx-auto text-left">
-                                <div className="bg-[#FDEBE2] p-6 rounded-2xl border border-[#FAC19E] shadow-sm hover:shadow-md transition-shadow">
-                                    <h3 className="text-xl font-bold text-[#9D7E6B] mb-3 flex items-center gap-2">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 max-w-4xl mx-auto text-left">
+                                <div className="bg-[#FDEBE2] p-3 rounded-xl border border-[#FAC19E] shadow-sm hover:shadow-md transition-shadow">
+                                    <h3 className="text-base font-bold text-[#9D7E6B] mb-2 flex items-center gap-2">
                                         <FaHeart className="text-red-400" /> Beneficios de una mascota
                                     </h3>
-                                    <ul className="list-disc list-inside space-y-2 text-sm text-gray-800">
+                                    <ul className="list-disc list-inside space-y-1 text-xs text-gray-800">
                                         <li>Reducen el estrés y la ansiedad diaria.</li>
                                         <li>Fomentan la actividad física y los paseos.</li>
                                         <li>Brindan compañía incondicional y lealtad.</li>
@@ -102,11 +99,11 @@ export const AdoptionSuccessPage = () => {
                                         <li>Mejoran el desarrollo emocional familiar.</li>
                                     </ul>
                                 </div>
-                                <div className="bg-[#FDEBE2] p-6 rounded-2xl border border-[#FAC19E] shadow-sm hover:shadow-md transition-shadow">
-                                    <h3 className="text-xl font-bold text-[#9D7E6B] mb-3 flex items-center gap-2">
+                                <div className="bg-[#FDEBE2] p-3 rounded-xl border border-[#FAC19E] shadow-sm hover:shadow-md transition-shadow">
+                                    <h3 className="text-base font-bold text-[#9D7E6B] mb-2 flex items-center gap-2">
                                         <FaDog className="text-[#9D7E6B]" /> Cuidados importantes
                                     </h3>
-                                    <ul className="list-disc list-inside space-y-2 text-sm text-gray-800">
+                                    <ul className="list-disc list-inside space-y-1 text-xs text-gray-800">
                                         <li>Visitas periódicas al veterinario y vacunas.</li>
                                         <li>Alimentación balanceada y agua fresca siempre.</li>
                                         <li>Tiempo diario de juego y paseos recreativos.</li>
@@ -116,17 +113,17 @@ export const AdoptionSuccessPage = () => {
                                 </div>
                             </div>
 
-                            <div className="bg-[#FDEBE2]/50 p-4 rounded-xl inline-block mt-6">
-                                <p className="text-[#9D7E6B] font-bold italic text-sm md:text-base">
+                            <div className="bg-[#FDEBE2]/50 p-2 rounded-lg inline-block mt-3">
+                                <p className="text-[#9D7E6B] font-bold italic text-xs">
                                     "Salvar un animal no cambiará el mundo, pero cambiará el mundo para ese animal."
                                 </p>
                             </div>
                         </div>
 
-                        <div className="mt-10">
+                        <div className="mt-4">
                             <button
                                 onClick={() => navigate('/')}
-                                className="bg-[#2A3748] text-white font-bold py-4 px-10 rounded-full hover:bg-[#1a202c] transition-all transform hover:scale-105 shadow-xl text-lg flex items-center gap-3 mx-auto"
+                                className="bg-[#2A3748] text-white font-bold py-2 px-6 rounded-full hover:bg-[#1a202c] transition-all transform hover:scale-105 shadow-xl text-sm flex items-center gap-2 mx-auto"
                             >
                                 <FaHome /> Volver al Inicio
                             </button>
@@ -135,25 +132,6 @@ export const AdoptionSuccessPage = () => {
 
                 </div>
             </main>
-
-            {/* Footer */}
-            <footer className="bg-[#9D7E6B] h-16 flex items-center justify-between px-10 text-white font-bold shadow-inner z-20">
-                <span className="text-sm tracking-widest hidden sm:block">ALOA - Amor por las Mascotas</span>
-                <div className="flex items-center gap-6">
-                    <div className="flex items-center gap-2">
-                        <div className="bg-white p-1 rounded shadow-sm">
-                            <SiGmail className="text-[#ea4335] text-sm" />
-                        </div>
-                        <span className="text-xs sm:text-sm">aloadopcion@gmail.com</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <div className="bg-white p-1 rounded-full shadow-sm">
-                            <FaPhoneAlt className="text-black text-xs" />
-                        </div>
-                        <span className="text-xs sm:text-sm">4275-6866</span>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 };

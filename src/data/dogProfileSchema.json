@@ -1,0 +1,107 @@
+{
+  "dogProfile": {
+    "basicInfo": {
+      "name": "string",
+      "breedName": "string",
+      "image": "string",
+      "history": "string"
+    },
+    "alimentacion": {
+      "tipoComida": {
+        "value": "cachorro|adulto|necesidades_especiales",
+        "label": "string"
+      },
+      "porcionesDiarias": {
+        "cantidad": "string",
+        "frecuencia": "string"
+      },
+      "restriccionesMedicas": {
+        "tieneRestricciones": "boolean",
+        "detalles": "string",
+        "alimentosEvitar": ["string"]
+      },
+      "tooltip": "string"
+    },
+    "cuidadosBasicos": {
+      "cepillado": {
+        "frecuencia": "string",
+        "tipoPelo": "string",
+        "herramientasRecomendadas": ["string"]
+      },
+      "ejercicio": {
+        "nivel": "bajo|medio|alto",
+        "minutosDiarios": "number",
+        "tipoActividad": "string"
+      },
+      "salud": {
+        "vacunasAlDia": "boolean",
+        "desparasitacionesAlDia": "boolean",
+        "proximaVacuna": "string",
+        "proximaDesparasitacion": "string"
+      },
+      "aseo": {
+        "banioFrecuencia": "string",
+        "corteUñas": "string",
+        "limpiezaOidos": "string",
+        "cuidadoDental": "string"
+      },
+      "tooltip": "string"
+    },
+    "comportamiento": {
+      "convivenciaNinos": {
+        "compatible": "boolean",
+        "edadMinima": "string",
+        "observaciones": "string"
+      },
+      "relacionPerros": {
+        "compatible": "boolean",
+        "preferencias": "string",
+        "observaciones": "string"
+      },
+      "relacionGatos": {
+        "compatible": "boolean",
+        "observaciones": "string"
+      },
+      "nivelEnergia": {
+        "valor": "bajo|medio|alto",
+        "descripcion": "string"
+      },
+      "toleranciaSoledad": {
+        "horasMaximas": "number",
+        "recomendaciones": "string"
+      },
+      "tooltip": "string"
+    },
+    "juegosFavoritos": {
+      "actividadesPreferidas": [
+        {
+          "nombre": "string",
+          "descripcion": "string",
+          "duracion": "string"
+        }
+      ],
+      "juguetesRecomendados": [
+        {
+          "tipo": "string",
+          "razon": "string",
+          "seguridad": "string"
+        }
+      ],
+      "juegosEvitar": ["string"],
+      "tooltip": "string"
+    },
+    "recomendacionesPostAdopcion": {
+      "primerosDias": {
+        "periodoAdaptacion": "string",
+        "preparacionEspacio": ["string"],
+        "rutinasEstablecer": ["string"]
+      },
+      "consejosSemana1": ["string"],
+      "consejosSemana2": ["string"],
+      "consejosSemana3": ["string"],
+      "senalesAdaptacion": ["string"],
+      "cuandoContactarVeterinario": "string",
+      "tooltip": "string"
+    }
+  }
+}

@@ -12,6 +12,7 @@ export const LandingPage = () => {
     const [showMision, setShowMision] = useState(false);
     const [showVision, setShowVision] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
+    const [showWelcome, setShowWelcome] = useState(true);
     const [userDetails, setUserDetails] = useState({});
 
     useEffect(() => {
@@ -20,10 +21,21 @@ export const LandingPage = () => {
             if (userData) {
                 setUserDetails(JSON.parse(userData));
             }
+            
+            // Mostrar bienvenida solo la primera vez
+            const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
+            if (hasSeenWelcome) {
+                setShowWelcome(false);
+            }
         } catch (error) {
             console.error(error);
         }
     }, []);
+
+    const handleCloseWelcome = () => {
+        setShowWelcome(false);
+        localStorage.setItem('hasSeenWelcome', 'true');
+    };
 
     return (
         <div className="flex flex-col h-screen w-full font-sans overflow-hidden">
@@ -252,6 +264,62 @@ export const LandingPage = () => {
                                     className="bg-red-500 text-white px-6 py-2 rounded-full font-bold hover:bg-red-600 transition-colors shadow-md"
                                 >
                                     Cerrar Sesión
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Modal - Bienvenida */}
+                {showWelcome && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-500">
+                        <div className="bg-white p-8 rounded-3xl shadow-2xl max-w-2xl w-full relative border-4 border-[#FAC19E] animate-in zoom-in duration-500">
+                            <button
+                                onClick={handleCloseWelcome}
+                                className="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition-colors animate-pulse"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+                            <div className="text-center mb-6">
+                                <div className="animate-float inline-block">
+                                    <img src={aloaLogo} alt="ALOA Logo" className="w-32 h-24 object-contain mx-auto mb-4" />
+                                </div>
+                            </div>
+
+                            <h2 className="text-3xl font-extrabold text-[#9D7E6B] mb-6 text-center uppercase tracking-wide animate-slide-up">
+                                ¡Bienvenido a ALOA!
+                            </h2>
+
+                            <div className="space-y-4 text-gray-700 text-justify leading-relaxed text-lg mb-6">
+                                <p className="animate-slide-up" style={{ animationDelay: '0.1s' }}>
+                                    <span className="font-bold text-[#9D7E6B]">ALOA</span> es una plataforma dedicada a conectar corazones con perros que necesitan un hogar amoroso.
+                                </p>
+                                <p className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
+                                    Nuestro objetivo es facilitar la <span className="font-bold text-[#9D7E6B]">adopción responsable</span> proporcionando información detallada sobre cada mascota, incluyendo sus cuidados, comportamiento, alimentación y recomendaciones para una vida feliz juntos.
+                                </p>
+                                <p className="animate-slide-up" style={{ animationDelay: '0.3s' }}>
+                                    Explora nuestro catálogo de perros por categoría (Raza Pequeña, Mediana o Grande), conoce sus historias, y encuentra al compañero perfecto para ti y tu familia.
+                                </p>
+                            </div>
+
+                            <div className="bg-[#FDEBE2] border-l-4 border-[#9D7E6B] p-4 rounded-r-xl mb-6 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+                                <p className="text-[#9D7E6B] font-semibold text-center">
+                                    💝 Cada adopción salva una vida y crea un vínculo inquebrantable
+                                </p>
+                            </div>
+
+                            <div className="flex justify-center animate-slide-up" style={{ animationDelay: '0.5s' }}>
+                                <button
+                                    onClick={handleCloseWelcome}
+                                    className="bg-[#9D7E6B] text-white px-8 py-3 rounded-full font-bold hover:bg-[#FAC19E] hover:text-[#5c4a3f] transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
+                                >
+                                    Comenzar a Explorar
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
                                 </button>
                             </div>
                         </div>

@@ -1,0 +1,177 @@
+{
+  "_id": "example-dog-123",
+  "name": "Max",
+  "breedName": "Golden Retriever",
+  "image": "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&h=400&fit=crop",
+  "history": "Max es un Golden Retriever de 3 años que llegó al refugio tras una mudanza de su familia anterior. Es un perro extremadamente cariñoso y sociable que adora a las personas. Ha vivido con niños anteriormente y se lleva muy bien con ellos. Max está completamente vacunado y desparasitado. Busca un hogar donde pueda recibir mucho amor y ejercicio diario.",
+  "alimentacion": {
+    "tipoComida": {
+      "value": "adulto",
+      "label": "Adulto"
+    },
+    "porcionesDiarias": {
+      "cantidad": "2.5 tazas",
+      "frecuencia": "2 veces al día (mañana y noche)"
+    },
+    "restriccionesMedicas": {
+      "tieneRestricciones": false,
+      "detalles": "",
+      "alimentosEvitar": []
+    },
+    "tooltip": "Una alimentación adecuada es fundamental para la salud y longevidad de tu mascota. Consulta siempre con un veterinario."
+  },
+  "cuidadosBasicos": {
+    "cepillado": {
+      "frecuencia": "3-4 veces por semana",
+      "tipoPelo": "Largo y denso",
+      "herramientasRecomendadas": ["Cepillo de cerdas suaves", "Peine de dientes finos", "Deshieratador"]
+    },
+    "ejercicio": {
+      "nivel": "alto",
+      "minutosDiarios": 60,
+      "tipoActividad": "Caminatas largas, natación y juegos de búsqueda"
+    },
+    "salud": {
+      "vacunasAlDia": true,
+      "desparasitacionesAlDia": true,
+      "proximaVacuna": "En 6 meses (rabia anual)",
+      "proximaDesparasitacion": "En 3 meses"
+    },
+    "aseo": {
+      "banioFrecuencia": "Cada 6-8 semanas o cuando sea necesario",
+      "corteUñas": "Cada 3-4 semanas",
+      "limpiezaOidos": "Semanal (son propensos a infecciones)",
+      "cuidadoDental": "Diario con cepillo dental y juguetes dentales"
+    },
+    "tooltip": "Los cuidados regulares previenen enfermedades y fortalecen el vínculo con tu mascota."
+  },
+  "comportamiento": {
+    "convivenciaNinos": {
+      "compatible": true,
+      "edadMinima": "3 años",
+      "observaciones": "Excelente con niños, muy paciente y juguetón. Siempre supervisar interacciones."
+    },
+    "relacionPerros": {
+      "compatible": true,
+      "preferencias": "Se lleva bien con perros de todos los tamaños",
+      "observaciones": "Socializado, disfruta jugar en grupos"
+    },
+    "relacionGatos": {
+      "compatible": true,
+      "observaciones": "Puede convivir con gatos si se presenta gradualmente"
+    },
+    "nivelEnergia": {
+      "valor": "alto",
+      "descripcion": "Muy activo: necesita ejercicio diario intenso para mantenerse equilibrado"
+    },
+    "toleranciaSoledad": {
+      "horasMaximas": 4,
+      "recomendaciones": "No tolera bien largos periodos solo. Ideal para familias con alguien en casa durante el día."
+    },
+    "tooltip": "Entender el comportamiento ayuda a crear un ambiente armonioso para todos."
+  },
+  "juegosFavoritos": {
+    "actividadesPreferidas": [
+      {
+        "nombre": "Cobrar la pelota",
+        "descripcion": "Le encanta perseguir y traer pelotas, puede jugar por horas",
+        "duracion": "20-30 minutos por sesión"
+      },
+      {
+        "nombre": "Natación",
+        "descripcion": "Ama el agua, excelente para ejercicio de bajo impacto",
+        "duracion": "30-45 minutos"
+      },
+      {
+        "nombre": "Juegos de olfato",
+        "descripcion": "Busca premios escondidos con gran entusiasmo",
+        "duracion": "15-20 minutos"
+      },
+      {
+        "nombre": "Caminatas largas",
+        "descripcion": "Explora nuevos senderos con curiosidad y energía",
+        "duracion": "45-60 minutos"
+      }
+    ],
+    "juguetesRecomendados": [
+      {
+        "tipo": "Pelotas de goma resistente",
+        "razon": "Duraderas y perfectas para juegos de cobro",
+        "seguridad": "Elegir tamaño adecuado para evitar atragantamiento"
+      },
+      {
+        "tipo": "Juguetes de cuerda",
+        "razon": "Ayudan con la higiene dental y satisfacen instinto de morder",
+        "seguridad": "Supervisar para evitar ingestión de hilos"
+      },
+      {
+        "tipo": "Juguetes de olfato (Kong)",
+        "razon": "Estimulan mentalmente y reducen ansiedad",
+        "seguridad": "Lavar regularmente, sin piezas pequeñas"
+      },
+      {
+        "tipo": "Frisbees suaves",
+        "razon": "Excelentes para ejercicio al aire libre",
+        "seguridad": "Usar solo en áreas seguras y abiertas"
+      }
+    ],
+    "juegosEvitar": [
+      "Juegos de fuerza excesiva (tug-of-war intenso)",
+      "Juguetes con partes pequeñas que pueda tragar",
+      "Juegos que fomenten la agresividad"
+    ],
+    "tooltip": "El juego es esencial para el bienestar físico y mental de tu perro."
+  },
+  "recomendacionesPostAdopcion": {
+    "primerosDias": {
+      "periodoAdaptacion": "Las primeras 3 semanas son cruciales para la adaptación. Ten paciencia y sé consistente.",
+      "preparacionEspacio": [
+        "Crear un área segura con cama cómoda y juguetes",
+        "Eliminar objetos peligrosos (cables, plantas tóxicas)",
+        "Tener comederos y bebederos accesibles",
+        "Preparar espacio para ejercicio al aire libre",
+        "Tener collar, correa y etiqueta de identificación"
+      ],
+      "rutinasEstablecer": [
+        "Horarios fijos de comida (mañana y noche)",
+        "Paseos a la misma hora cada día",
+        "Momentos de descanso y silencio",
+        "Sesiones de juego programadas"
+      ]
+    },
+    "consejosSemana1": [
+      "Dar espacio y no forzar interacciones, deja que él se acerque",
+      "Establecer rutinas básicas de comida y paseo desde el día 1",
+      "Usar refuerzo positivo (premios, elogios) para buen comportamiento",
+      "Supervisar siempre las interacciones con niños y otras mascotas",
+      "Mantener un ambiente tranquilo y predecible",
+      "No castigar comportamientos indeseados, redirige la atención"
+    ],
+    "consejosSemana2": [
+      "Incrementar gradualmente las actividades y exploraciones",
+      "Presentar nuevas áreas de la casa de forma progresiva",
+      "Continuar con el entrenamiento básico (sentado, acuéstate, ven)",
+      "Establecer límites claros pero con cariño",
+      "Fomentar la confianza con juegos y paseos",
+      "Presentar a más personas y mascotas de forma controlada"
+    ],
+    "consejosSemana3": [
+      "Consolidar las rutinas establecidas en las primeras semanas",
+      "Fomentar más interacción social controlada",
+      "Evaluar adaptación y programar visita al veterinario",
+      "Introducir nuevos comandos y trucos simples",
+      "Aumentar gradualmente el tiempo de juego",
+      "Observar señales de estrés y ajustar según sea necesario"
+    ],
+    "senalesAdaptacion": [
+      "Come y duerme normalmente",
+      "Muestra curiosidad por explorar",
+      "Responde a su nombre y comandos básicos",
+      "Juega activamente y muestra interés",
+      "Se relaja en su nuevo espacio",
+      "Busca interacción con la familia"
+    ],
+    "cuandoContactarVeterinario": "Contacta inmediatamente si muestra pérdida de apetito por más de 24 horas, letargo extremo, agresividad inusual, vómitos persistentes, diarrea, problemas respiratorios o cualquier cambio drástico de comportamiento durante las primeras 2 semanas.",
+    "tooltip": "Una transición gradual y paciente asegura una adaptación exitosa."
+  }
+}

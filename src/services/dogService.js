@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:3001/api/dogs';
+const API_URL = 'https://aloa-server-sanjudas.vercel.app'
 
 
 export const getDogs = async () => {
     try {
-        const response = await axios.get(API_URL);
+        const response = await axios.get(`${API_URL}/api/dogs`);
         
         // Ensure we always return an array
         let data = response.data;
